@@ -10,7 +10,7 @@ export const fetchOfficial = async (
   session: string,
   driver: string
 ) => {
-  const res = await api.get("/official-telemetry", {
+  const res = await api.get("/telemetry", {
     params: { year, grand_prix, session, driver },
   });
 
