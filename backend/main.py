@@ -11,11 +11,12 @@ app = FastAPI(title="F1 Telemetry API")
 # CORS (required for React frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["https://f1-frontend.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Root health endpoint
 @app.get("/")
