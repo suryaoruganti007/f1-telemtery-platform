@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:18.1
+    container_name: f1_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: f1user
+      POSTGRES_PASSWORD: f1pass
+      POSTGRES_DB: f1db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+  redis:
+    image: redis:7.2
+    container_name: f1_redis
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ./backend
+    container_name: f1_backend
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://f1user:f1pass@postgres:5432/f1db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: f1_frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+
+volumes:
+  pgdata:
