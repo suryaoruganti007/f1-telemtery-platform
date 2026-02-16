@@ -174,19 +174,19 @@ Services exposed:
 - Frontend → http://localhost:5173
 - Backend → http://localhost:8000
 - PostgreSQL → 5432
-To stop:
+- To stop:
 docker compose down
 ---
 ## Official Telemetry Endpoint
 Example request:
 GET /api/official-telemetry?year=2023&grand_prix=Monaco&session=Q&driver=VER
-Supported session codes:
+## Supported session codes:
 - R → Race
 - Q → Qualifying
 - FP1
 - FP2
 - FP3
-Driver examples:
+- Driver examples:
 VER, HAM, LEC, SAI, NOR, ALO, RUS
 ---
 ## Deployment
